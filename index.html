@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Francisco & Luisa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&display=swap');
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    body {
+      background: url('7301047C-265F-4943-90A7-96F5252E8B3E.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: brightness(0.6) blur(2px);
+    }
+
+    .contenido {
+      z-index: 1;
+      color: #ffeaf5;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      margin-bottom: 0.3em;
+      color: #fff0f8;
+    }
+
+    .contador {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .subtexto {
+      font-size: 1.1em;
+      color: #fbe4f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenido">
+    <h1>Francisco & Luisa</h1>
+    <div class="contador" id="contador">Calculando amor eterno...</div>
+    <div class="subtexto">Desde el 2 de noviembre de 2024</div>
+  </div>
+
+  <script>
+    const fechaInicio = new Date("2024-11-02T00:00:00");
+
+    function actualizarContador() {
+      const ahora = new Date();
+      let años = ahora.getFullYear() - fechaInicio.getFullYear();
+      let meses = ahora.getMonth() - fechaInicio.getMonth();
+      let dias = ahora.getDate() - fechaInicio.getDate();
+      let horas = ahora.getHours() - fechaInicio.getHours();
+      let minutos = ahora.getMinutes() - fechaInicio.getMinutes();
+      let segundos = ahora.getSeconds() - fechaInicio.getSeconds();
+
+      if (segundos < 0) { segundos += 60; minutos--; }
+      if (minutos < 0) { minutos += 60; horas--; }
+      if (horas < 0) { horas += 24; dias--; }
+      if (dias < 0) {
+        meses--;
+        const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+        dias += ultimoMes;
+      }
+      if (meses < 0) { meses += 12; años--; }
+
+      const totalMeses = (años * 12) + meses;
+
+      document.getElementById("contador").textContent =
+        `${totalMeses} meses, ${dias} días, ` +
+        `${String(horas).padStart(2, '0')} horas, ` +
+        `${String(minutos).padStart(2, '0')} minutos y ` +
+        `${String(segundos).padStart(2, '0')} segundos`;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
+</body>
+</html>
