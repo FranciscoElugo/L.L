@@ -81,7 +81,7 @@
       }
       if (meses < 0) { meses += 12; años--; }
 
-      const totalMeses = (años * 12) + año;
+      const totalMeses = (años * 12) + meses;
 
       document.getElementById("contador").textContent =
         `${totalMeses} meses, ${dias} días, ` +
