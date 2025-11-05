@@ -59,8 +59,8 @@
     <div class="subtexto">Desde el 2 de noviembre de 2024</div>
   </div>
 
-  <script>
-    const fechaInicio = new Date("2024-11-02T00:00:00");
+<script>
+  const fechaInicio = new Date("2024-11-02T00:00:00");
 
   function actualizarContador() {
     const ahora = new Date();
@@ -82,8 +82,7 @@
     if (meses < 0) { meses += 12; años--; }
 
     // Siempre mostrará años, meses, días, horas, minutos y segundos
-    const textoTiempo =
-      `${años} año${años !== 1 ? 's' : ''}, ` +
+    const textoTiempo = `${años} año${años !== 1 ? 's' : ''}, ` +
       `${meses} mes${meses !== 1 ? 'es' : ''}, ` +
       `${dias} día${dias !== 1 ? 's' : ''}, ` +
       `${String(horas).padStart(2, '0')} horas, ` +
@@ -95,6 +94,6 @@
 
   setInterval(actualizarContador, 1000);
   actualizarContador();
-  </script>
+</script>
 </body>
 </html>
