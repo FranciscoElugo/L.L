@@ -59,41 +59,40 @@
     <div class="subtexto">Desde el 2 de noviembre de 2024</div>
   </div>
 
-<script>
-  const fechaInicio = new Date("2024-11-02T00:00:00");
+  <script>
+    const fechaInicio = new Date("2024-11-02T00:00:00");
 
-  function actualizarContador() {
-    const ahora = new Date();
-    let años = ahora.getFullYear() - fechaInicio.getFullYear();
-    let meses = ahora.getMonth() - fechaInicio.getMonth();
-    let dias = ahora.getDate() - fechaInicio.getDate();
-    let horas = ahora.getHours() - fechaInicio.getHours();
-    let minutos = ahora.getMinutes() - fechaInicio.getMinutes();
-    let segundos = ahora.getSeconds() - fechaInicio.getSeconds();
+    function actualizarContador() {
+      const ahora = new Date();
+      let años = ahora.getFullYear() - fechaInicio.getFullYear();
+      let meses = ahora.getMonth() - fechaInicio.getMonth();
+      let dias = ahora.getDate() - fechaInicio.getDate();
+      let horas = ahora.getHours() - fechaInicio.getHours();
+      let minutos = ahora.getMinutes() - fechaInicio.getMinutes();
+      let segundos = ahora.getSeconds() - fechaInicio.getSeconds();
 
-    if (segundos < 0) { segundos += 60; minutos--; }
-    if (minutos < 0) { minutos += 60; horas--; }
-    if (horas < 0) { horas += 24; dias--; }
-    if (dias < 0) {
-      meses--;
-      const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
-      dias += ultimoMes;
+      if (segundos < 0) { segundos += 60; minutos--; }
+      if (minutos < 0) { minutos += 60; horas--; }
+      if (horas < 0) { horas += 24; dias--; }
+      if (dias < 0) {
+        meses--;
+        const ultimoMes = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
+        dias += ultimoMes;
+      }
+      if (meses < 0) { meses += 12; años--; }
+
+      const textoTiempo = `${años} año${años !== 1 ? 's' : ''}, ` +
+        `${meses} mes${meses !== 1 ? 'es' : ''}, ` +
+        `${dias} día${dias !== 1 ? 's' : ''}, ` +
+        `${String(horas).padStart(2, '0')} horas, ` +
+        `${String(minutos).padStart(2, '0')} minutos y ` +
+        ${String(segundos).padStart(2, '0')} segundos;
+
+      document.getElementById("contador").textContent = textoTiempo;
     }
-    if (meses < 0) { meses += 12; años--; }
 
-    // Siempre mostrará años, meses, días, horas, minutos y segundos
-    const textoTiempo = `${años} año${años !== 1 ? 's' : ''}, ` +
-      `${meses} mes${meses !== 1 ? 'es' : ''}, ` +
-      `${dias} día${dias !== 1 ? 's' : ''}, ` +
-      `${String(horas).padStart(2, '0')} horas, ` +
-      `${String(minutos).padStart(2, '0')} minutos y ` +
-      ${String(segundos).padStart(2, '0')} segundos;
-
-    document.getElementById("contador").textContent = textoTiempo;
-  }
-
-  setInterval(actualizarContador, 1000);
-  actualizarContador();
-</script>
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
 </body>
 </html>
